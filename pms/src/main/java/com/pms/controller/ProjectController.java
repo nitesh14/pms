@@ -58,7 +58,18 @@ public class ProjectController {
 		}
 	}
 	
-	@PutMapping("/update/{id}")
+	@PutMapping("/update")
+	public ResponseEntity<?> updateProject(@RequestBody Project project) {
+		try {
+			project.setUpdateAt(new Date());
+			return ResponseEntity.ok(repo.save(project));
+
+		} catch (Exception e) {
+			return ResponseEntity.ok(e.getMessage());
+		}
+	}
+	
+	/*@PutMapping("/update/{id}")
 	public ResponseEntity<?> updateProject(@PathVariable(value = "id") Long id, 
 			@RequestBody Project project) {
 		try {
@@ -75,7 +86,7 @@ public class ProjectController {
 		} catch (Exception e) {
 			return ResponseEntity.ok(e.getMessage());
 		}
-	}
+	}*/
 	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteProject(@PathVariable(value = "id") Long id) {

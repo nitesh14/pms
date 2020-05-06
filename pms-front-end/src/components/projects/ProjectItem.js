@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { deleteProject } from "../../action/ProjectActions";
+import {Link} from 'react-router-dom';
 
 class ProjectItem extends React.Component {
-    
+
     onDeleteClick = id => {
         console.log("delete method called");
         this.props.deleteProject(id);
@@ -30,9 +31,11 @@ class ProjectItem extends React.Component {
                                 <p className="card-text text-truncate ">
                                     {project.acceptCriteria}
                                 </p>
-                                <a href="#" className="btn btn-primary">
-                                    View / Update
-                                </a>
+                                <Link to={`/updateproject/${project.id}`}>
+                                    <li className="btn btn-primary">
+                                        View / Update
+                                    </li>
+                                </Link>
                                 <button className="btn btn-danger ml-4"
                                     onClick={this.onDeleteClick.bind(this, project.id)}>
                                     Delete

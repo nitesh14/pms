@@ -3,6 +3,7 @@ import './App.css';
 import Dashboard from "./components/Dashboard";
 import Header from "./components/layout/Header";
 import Addproject from  "./components/projects/Addproject";
+import updateProject from "./components/projects/updateProject";
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import{Provider} from 'react-redux';
@@ -17,6 +18,7 @@ class App extends React.Component {
             <Header />
             <Route path="/dashboard" component={Dashboard} />
             <Route exact path="/addtask" component={Addproject} />
+            <Route exact path="/updateproject/:id" component={updateProject} />
           </Router>
         </Provider>
       </div>
